@@ -1,3 +1,7 @@
+let num1 = 0;
+let operator = null;
+let num2 = 0;
+
 function add(a,b) {
     return a + b;
 }
@@ -19,3 +23,7 @@ function divide(a,b) {
 
 let res = add(1,2);
 console.log(res);
+
+function operate(num1, operator, num2) {
+    console.log("operate function");
+}
