@@ -47,6 +47,34 @@ function operate(num1, operator, num2) {
     }
 }
 
+let display_value = "0";
+
+const updateDisplay = () => {
+    document.getElementById("display").innerText = display_value;
+}
+
+const appendToDisplay = (value) => {
+    if (display_value == "0") {
+        display_value = value;
+    } else {
+        display_value += value;
+    }
+    updateDisplay();
+};
+
+const buttons = document.querySelectorAll(".numbers");
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.innerText;
+        appendToDisplay(value);
+    });
+});
+
+const clearDisplay = () => {
+    display_value = "0";
+    updateDisplay();
+};
+
 const button1 = document.getElementById("1")
 button1.addEventListener("click", () => {
     console.log("1");
@@ -124,7 +152,7 @@ buttonDivide.addEventListener("click", () => {
 
 const buttonAC = document.getElementById("AC")
 buttonAC.addEventListener("click", () => {
-    console.log("AC");
+    clearDisplay();
 });
 
 const buttonEqual = document.getElementById("=")
