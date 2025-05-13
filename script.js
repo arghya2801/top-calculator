@@ -2,25 +2,32 @@ let num1 = null;
 let operator = null;
 let num2 = null;
 
-function add(a,b) {
-    return a + b;
+function add(a, b) {
+    return parseFloat((a + b).toFixed(10));
 }
 
-function subtract(a,b) {
-    return a - b;
+function subtract(a, b) {
+    return parseFloat((a - b).toFixed(10));
 }
 
-function multiply(a,b) {
-    return a * b;
+function multiply(a, b) {
+    return parseFloat((a * b).toFixed(10));
 }
 
-function divide(a,b) {
+function divide(a, b) {
     if (b === 0) {
         return "Cannot divide by zero";
     }
-    return a / b;
+    return parseFloat((a / b).toFixed(10));
 }
 
+function percent(a) {
+    return parseFloat((a / 100).toFixed(10));
+}
+
+function negate(a) {
+    return parseFloat((-a).toFixed(10));
+}
 
 function operate(num1, operator, num2) {
     switch (operator) {
@@ -37,61 +44,91 @@ function operate(num1, operator, num2) {
     }
 }
 
-let display_value = "0";
+let displayValue = "";
 
+const displayElement = document.getElementById("display");
 const updateDisplay = () => {
-    document.getElementById("display").innerText = display_value;
+    displayElement.innerText = displayValue || "0";
 };
 
 const appendToDisplay = (value) => {
-    if (display_value === "0") {
-        display_value = value;
+    if (displayValue === "0" && value !== ".") {
+        displayValue = value;
+    } else if (displayValue.includes(".") && value === ".") {
+        return;
     } else {
-        display_value += value;
+        displayValue += value;
     }
     updateDisplay();
 };
 
-const buttons = document.querySelectorAll(".numbers, .operators");
+const clearDisplay = () => {
+    displayValue = "";
+    num1 = null;
+    operator = null;
+    num2 = null;
+    updateDisplay();
+};
+
+const handleOperator = (op) => {
+    if (displayValue === "") return;
+    if (num1 !== null && operator !== null) {
+        num2 = parseFloat(displayValue);
+        num1 = operate(num1, operator, num2);
+        displayValue = String(num1);
+        updateDisplay();
+    }
+    num1 = parseFloat(displayValue);
+    operator = op;
+    displayValue = "";
+};
+
+const handleEquals = () => {
+    if (operator === null || num1 === null || displayValue === "") return;
+    num2 = parseFloat(displayValue);
+    const result = operate(num1, operator, num2);
+    displayValue = String(result);
+    updateDisplay();
+    num1 = null;
+    operator = null;
+};
+
+const handlePercent = () => {
+    if (displayValue === "") return;
+    displayValue = String(percent(parseFloat(displayValue)));
+    updateDisplay();
+};
+
+const handleNegate = () => {
+    if (displayValue === "" || displayValue === "0") return;
+    displayValue = String(negate(parseFloat(displayValue)));
+    updateDisplay();
+};
+
+const buttons = document.querySelectorAll(".number");
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        const value = button.innerText;
-
-        if (!isNaN(value) || value === ".") {
-            appendToDisplay(value);
-        } else if (value === "AC") {
-            clearDisplay();
-        } else if (value === "=") {
-            if (num1 !== null && operator !== null && display_value !== "0") {
-                num2 = parseFloat(display_value);
-                const result = operate(num1, operator, num2);
-                display_value = String(result);
-                updateDisplay();
-                
-                num1 = null;
-                operator = null;
-            }
-        } else {
-            if (num1 === null) {
-                num1 = parseFloat(display_value);
-            } else if (operator !== null) {
-                num2 = parseFloat(display_value);
-                const result = operate(num1, operator, num2);
-                display_value = String(result);
-                updateDisplay();
-                num1 = result;
-            }
-            operator = value;
-            display_value = "0";
-        }
+        appendToDisplay(button.innerText);
     });
 });
 
-const clearDisplay = () => {
-    display_value = "0";
-    num1 = null;
-    operator = null;
-    updateDisplay();
-};
+const operatorButtons = document.querySelectorAll(".operation");
+operatorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        handleOperator(button.innerText);
+    });
+});
+
+const equalsButton = document.querySelector(".equals");
+equalsButton.addEventListener("click", handleEquals);
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener("click", clearDisplay);
+
+const percentButton = document.querySelector(".percent");
+percentButton.addEventListener("click", handlePercent);
+
+const negateButton = document.querySelector(".negate");
+negateButton.addEventListener("click", handleNegate);
 
 updateDisplay();

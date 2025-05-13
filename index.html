@@ -3,32 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Calculator</title>
+    <title>Sleek Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello
-    <div id="display">0000</div>
-    <div class="calculator-body">
-        <button id="1" class="numbers">1</button>
-        <button id="2" class="numbers">2</button>
-        <button id="3" class="numbers">3</button>
-        <button id="+" class="operators">+</button>
-        <button id="4" class="numbers">4</button>
-        <button id="5" class="numbers">5</button>
-        <button id="6" class="numbers">6</button>
-        <button id="-" class="operators">-</button>
-        <button id="7" class="numbers">7</button>
-        <button id="8" class="numbers">8</button>
-        <button id="9" class="numbers">9</button>
-        <button id="*" class="operators">*</button>
-        <button id="0" class="numbers">0</button>
-        <button id="." class="operators">.</button>
-        <button id="=" class="operators">=</button>
-        <button id="/" class="operators">/</button>
-        <button id="AC" class="operators">AC</button>
+    <div class="calculator">
+        <div id="display">0</div>
+        <div class="calculator-buttons">
+            <button id="AC" class="operator clear">AC</button>
+            <button id="+/-" class="operator negate">+/-</button>
+            <button id="%" class="operator percent">%</button>
+            <button id="/" class="operator operation">/</button>
+            <button id="7" class="number">7</button>
+            <button id="8" class="number">8</button>
+            <button id="9" class="number">9</button>
+            <button id="*" class="operator operation">*</button>
+            <button id="4" class="number">4</button>
+            <button id="5" class="number">5</button>
+            <button id="6" class="number">6</button>
+            <button id="-" class="operator operation">-</button>
+            <button id="1" class="number">1</button>
+            <button id="2" class="number">2</button>
+            <button id="3" class="number">3</button>
+            <button id="+" class="operator operation">+</button>
+            <button id="0" class="number zero">0</button>
+            <button id="." class="number decimal">.</button>
+            <button id="=" class="operator equals">=</button>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
