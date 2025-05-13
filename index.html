@@ -3,32 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleek Calculator</title>
+    <title>Advanced Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <div id="display">0</div>
-        <div class="calculator-buttons">
-            <button id="AC" class="operator clear">AC</button>
-            <button id="+/-" class="operator negate">+/-</button>
-            <button id="%" class="operator percent">%</button>
-            <button id="/" class="operator operation">/</button>
-            <button id="7" class="number">7</button>
-            <button id="8" class="number">8</button>
-            <button id="9" class="number">9</button>
-            <button id="*" class="operator operation">*</button>
-            <button id="4" class="number">4</button>
-            <button id="5" class="number">5</button>
-            <button id="6" class="number">6</button>
-            <button id="-" class="operator operation">-</button>
-            <button id="1" class="number">1</button>
-            <button id="2" class="number">2</button>
-            <button id="3" class="number">3</button>
-            <button id="+" class="operator operation">+</button>
-            <button id="0" class="number zero">0</button>
-            <button id="." class="number decimal">.</button>
-            <button id="=" class="operator equals">=</button>
+    <div class="calculator-container">
+        <div class="calculator-base">
+            <div id="display">0</div>
+            <div class="calculator-buttons">
+                <button id="AC" class="operator clear">AC</button>
+                <button id="+/-" class="operator negate">+/-</button>
+                <button id="%" class="operator percent">%</button>
+                <button id="backspace" class="operator backspace">←</button>
+
+                <button id="7" class="number">7</button>
+                <button id="8" class="number">8</button>
+                <button id="9" class="number">9</button>
+                <button id="/" class="operator operation">/</button>
+
+                <button id="4" class="number">4</button>
+                <button id="5" class="number">5</button>
+                <button id="6" class="number">6</button>
+                <button id="*" class="operator operation">*</button>
+
+                <button id="1" class="number">1</button>
+                <button id="2" class="number">2</button>
+                <button id="3" class="number">3</button>
+                <button id="-" class="operator operation">-</button>
+
+                <button id="0" class="number">0</button>
+                <button id="." class="number decimal">.</button>
+                <button id="=" class="operator equals">=</button>
+                <button id="+" class="operator operation">+</button>
+            </div>
+        </div>
+        <div class="calculator-advanced">
+            <div class="advanced-functions">
+                <button id="pi" class="constant">π</button>
+                <button id="e" class="constant">e</button>
+                <button id="pow" class="operator function">^</button>
+                <button id="sqrt" class="operator function">√</button>
+
+                <button id="log" class="operator function">log₁₀</button>
+                <button id="ln" class="operator function">ln</button>
+                <button id="logy" class="operator function">log<span style="font-size: 0.8em; vertical-align: super;">y</span>(x)</button>
+                <button id="inv" class="operator function">1/x</button>
+
+                <button id="sin" class="operator function">sin</button>
+                <button id="cos" class="operator function">cos</button>
+                <button id="tan" class="operator function">tan</button>
+                <button id="fact" class="operator function">!</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
